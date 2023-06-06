@@ -27,6 +27,7 @@ public class Program
     };
 
     static public List<IRobber> crew = new List<IRobber>();
+    
     static void Heist()
     {
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -41,6 +42,7 @@ public class Program
         AddNewCrewMember();
         startHeist();
     }
+
     static void AddRobber()
     {
         string? Name;
@@ -130,6 +132,7 @@ public class Program
             }
         }
     }
+
     static void ReconReport()
     {
         static string mostSecure(Bank bank)
@@ -160,6 +163,7 @@ public class Program
         Console.WriteLine($"The bank's least Secure System is the {leastSecure(theBank)}");
         Console.WriteLine();
     }
+
     static void CrewList()
     {
         int index = 0;
@@ -180,9 +184,8 @@ public class Program
             }
             index++;
         }
-
-
     }
+
     static void AddNewCrewMember()
     {
         Console.WriteLine();
@@ -215,6 +218,7 @@ public class Program
         CrewList();
         }
     }
+
     static void startHeist()
     {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -256,4 +260,5 @@ public class Program
             Console.WriteLine($"After it was all said and done, you took home ${myCut}");
         }
     }
+
 }
