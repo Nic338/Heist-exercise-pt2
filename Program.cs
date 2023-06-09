@@ -27,7 +27,7 @@ public class Program
     };
 
     static public List<IRobber> crew = new List<IRobber>();
-    
+
     static void Heist()
     {
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -141,21 +141,21 @@ public class Program
                 return "Alarm";
             else if (bank.VaultScore > bank.AlarmScore && bank.VaultScore > bank.SecurityGuardScore)
                 return "Vault";
-            else 
+            else
                 return "Security Guard";
         }
-    
+
         static string leastSecure(Bank bank)
         {
             if (bank.AlarmScore < bank.VaultScore && bank.AlarmScore < bank.SecurityGuardScore)
                 return "Alarm";
             else if (bank.VaultScore < bank.AlarmScore && bank.VaultScore < bank.SecurityGuardScore)
                 return "Vault";
-            else 
+            else
                 return "Security Guard";
         }
         Console.WriteLine("----------------------------------------------");
-        Console.WriteLine("+++++++++++++++ Recon Report  ++++++++++++++++");
+        Console.WriteLine("++++++++++++++++ Recon Report ++++++++++++++++");
         Console.WriteLine("----------------------------------------------");
         Console.WriteLine();
         Console.WriteLine($"The bank's most Secure Sytem is the {mostSecure(theBank)}");
@@ -171,15 +171,16 @@ public class Program
         Console.WriteLine("----------------------------------------------");
         Console.WriteLine();
 
-        for(int i = 0; i < rolodex.Count; i++)
+        for (int i = 0; i < rolodex.Count; i++)
         {
             int sumOfCuts = crew.Sum(x => x.PercentageCut);
             int maxCut = 100 - sumOfCuts;
 
-            if(rolodex[i].PercentageCut < maxCut && !crew.Contains(rolodex[i]))
+            if (rolodex[i].PercentageCut < maxCut && !crew.Contains(rolodex[i]))
             {
-            Console.WriteLine($"({i + 1}). {rolodex[i].Name}: ({rolodex[i].getSpecialty()}) Skill Level: {rolodex[i].SkillLevel} Cut: {rolodex[i].PercentageCut}%");
-            Console.WriteLine();
+                // The index gets 1 added to it so the list the user sees starts at 1 instead of 0
+                Console.WriteLine($"({i + 1}). {rolodex[i].Name}: ({rolodex[i].getSpecialty()}) Skill Level: {rolodex[i].SkillLevel} Cut: {rolodex[i].PercentageCut}%");
+                Console.WriteLine();
             }
         }
     }
@@ -193,34 +194,35 @@ public class Program
 
         while (true)
         {
-        Console.WriteLine("Enter an Index for the crew member you want:");
-        Console.WriteLine("If you're done, press ENTER to start your heist");
-        Console.WriteLine();
-        CrewIndex = Console.ReadLine();
-        
-        if (string.IsNullOrWhiteSpace(CrewIndex))
-        break;
+            Console.WriteLine("Enter an Index for the crew member you want:");
+            Console.WriteLine("If you're done, press ENTER to start your heist");
+            Console.WriteLine();
+            CrewIndex = Console.ReadLine();
 
-        parsedIndex = int.Parse(CrewIndex);
-        if (parsedIndex < 0 || parsedIndex > rolodex.Count)
-        {
-            Console.WriteLine("Invalid entry. Pick a valid crew member.");
-            continue;
-        }
+            if (string.IsNullOrWhiteSpace(CrewIndex))
+                break;
 
-        IRobber selectedCrew = rolodex[parsedIndex - 1];
+            parsedIndex = int.Parse(CrewIndex);
+            //The index now gets -1 to get rid of the + 1 from up above
+            if ((parsedIndex - 1) < 0 || (parsedIndex - 1) > rolodex.Count)
+            {
+                Console.WriteLine("Invalid entry. Pick a valid crew member.");
+                continue;
+            }
 
-        crew.Add(selectedCrew);
-        Console.WriteLine($"{selectedCrew.Name} was added to the crew");
-        Console.WriteLine();
-        CrewList();
+            IRobber selectedCrew = rolodex[parsedIndex - 1];
+
+            crew.Add(selectedCrew);
+            Console.WriteLine($"{selectedCrew.Name} was added to the crew");
+            Console.WriteLine();
+            CrewList();
         }
     }
 
     static void startHeist()
     {
-            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Console.WriteLine();
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine();
 
         foreach (IRobber crewMember in crew)
         {
@@ -228,8 +230,8 @@ public class Program
             Console.WriteLine();
 
         }
-            Console.WriteLine();
-            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine();
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
         if (theBank.IsSecure)
         {
