@@ -260,5 +260,4 @@ public class Program
             Console.WriteLine($"After it was all said and done, you took home ${myCut}");
         }
     }
-
 }

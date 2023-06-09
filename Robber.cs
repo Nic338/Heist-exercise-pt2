@@ -2,12 +2,12 @@ using System;
 
 public interface IRobber
 {
-    public string Name { get; }
-    public int SkillLevel {get; set;}
-    public int PercentageCut {get; set;}
-    public void PerformSkill(Bank bank)
+    string Name { get; }
+    int SkillLevel {get; set;}
+    int PercentageCut {get; set;}
+    void PerformSkill(Bank bank)
     {
         
     }
-    public string getSpecialty();
+    string getSpecialty();
 }

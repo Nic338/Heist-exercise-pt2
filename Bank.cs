@@ -8,7 +8,7 @@ public class Bank
     public int SecurityGuardScore {get; set;}
     public bool IsSecure { get
     {
-        if (AlarmScore + VaultScore + SecurityGuardScore > 0)
+        if (AlarmScore > 0 || VaultScore > 0 || SecurityGuardScore > 0)
         {
             return true;
         }
