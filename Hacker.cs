@@ -9,7 +9,7 @@ public class Hacker : IRobber
     {
        bank.AlarmScore = (bank.AlarmScore - SkillLevel);
         Console.WriteLine($"{Name} is hacking the alarm system. Decreased security by {SkillLevel} points!");
-        if (bank.AlarmScore == 0)
+        if (bank.AlarmScore <= 0)
         {
             Console.WriteLine($"{Name} has disabled the alarm system!");
         }

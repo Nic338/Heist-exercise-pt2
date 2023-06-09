@@ -9,7 +9,7 @@ public class Muscle : IRobber
     {
         bank.SecurityGuardScore = (bank.SecurityGuardScore - SkillLevel);
         Console.WriteLine($"{Name} is taking out the security guards. Decreased security by {SkillLevel} points.");
-        if (bank.SecurityGuardScore == 0)
+        if (bank.SecurityGuardScore <= 0)
         {
             Console.WriteLine($"{Name} has taken out all of the security guards!");
         }

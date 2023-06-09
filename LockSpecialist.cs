@@ -9,7 +9,7 @@ public class LockSpecialist : IRobber
     {
         bank.VaultScore = (bank.VaultScore - SkillLevel);
         Console.WriteLine($"{Name} is cracking the vault. Decreased security by {SkillLevel} points.");
-        if (bank.VaultScore == 0)
+        if (bank.VaultScore <= 0)
         {
             Console.WriteLine($"{Name} has broken into the vault!");
         }
