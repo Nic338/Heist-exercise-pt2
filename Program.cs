@@ -166,23 +166,21 @@ public class Program
 
     static void CrewList()
     {
-        int index = 0;
         Console.WriteLine("----------------------------------------------");
         Console.WriteLine("++++++++++ Potential Crew Members ++++++++++++");
         Console.WriteLine("----------------------------------------------");
         Console.WriteLine();
 
-        foreach(IRobber robber in rolodex)
+        for(int i = 0; i < rolodex.Count; i++)
         {
             int sumOfCuts = crew.Sum(x => x.PercentageCut);
             int maxCut = 100 - sumOfCuts;
 
-            if(robber.PercentageCut < maxCut && !crew.Contains(robber))
+            if(rolodex[i].PercentageCut < maxCut && !crew.Contains(rolodex[i]))
             {
-            Console.WriteLine($"({index}). {robber.Name}: ({robber.getSpecialty()}) Skill Level: {robber.SkillLevel} Cut: {robber.PercentageCut}%");
+            Console.WriteLine($"({i + 1}). {rolodex[i].Name}: ({rolodex[i].getSpecialty()}) Skill Level: {rolodex[i].SkillLevel} Cut: {rolodex[i].PercentageCut}%");
             Console.WriteLine();
             }
-            index++;
         }
     }
 
@@ -210,7 +208,7 @@ public class Program
             continue;
         }
 
-        IRobber selectedCrew = rolodex[parsedIndex];
+        IRobber selectedCrew = rolodex[parsedIndex - 1];
 
         crew.Add(selectedCrew);
         Console.WriteLine($"{selectedCrew.Name} was added to the crew");
